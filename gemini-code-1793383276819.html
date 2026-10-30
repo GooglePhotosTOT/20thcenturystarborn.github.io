@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20th Century Starborn Film Corporation</title>
+    
+    <!-- Browser Tab Icon (Favicon) -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #d4af37;
+            --accent-gold: #f3e5ab;
+            --dark-bg: #0b0c10;
+            --card-bg: #1f2833;
+            --text-light: #c5c6c7;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(11, 12, 16, 0.95);
+            border-bottom: 2px solid var(--primary-gold);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 5%;
+        }
+
+        /* Logo Image Container */
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            height: 55px; /* Adjust height as needed for your image */
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 5px rgba(212, 175, 55, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.03);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(11, 12, 16, 0.6), rgba(11, 12, 16, 0.9)), url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: -60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            text-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+            color: var(--white);
+        }
+
+        .btn {
+            background: transparent;
+            color: var(--primary-gold);
+            border: 2px solid var(--primary-gold);
+            padding: 12px 30px;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--primary-gold);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 10%;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-gold);
+            margin: 15px auto 0;
+        }
+
+        /* About & Legacy */
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .legacy-text p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .founders-box {
+            background: var(--card-bg);
+            padding: 40px;
+            border-left: 4px solid var(--primary-gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .founders-box h3 {
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .founders-box ul {
+            list-style: none;
+        }
+
+        .founders-box li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .founders-box li::before {
+            content: '✦';
+            color: var(--primary-gold);
+        }
+
+        /* Timeline / Era */
+        .timeline {
+            background: #0e1017;
+        }
+
+        .timeline-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .timeline-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 5px;
+            border-top: 3px solid var(--primary-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .timeline-card span {
+            color: var(--primary-gold);
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .timeline-card h3 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #07080b;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .legacy-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            nav ul {
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <!-- Header Logo Image Reference -->
+            <img src="logo.png" alt="20th Century Starborn Film Corporation Logo" class="brand-logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">Legacy</a></li>
+                <li><a href="#founding">Founders</a></li>
+                <li><a href="#milestones">Eras</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>20th Century Starborn Film Corporation</h1>
+        <p>A century-long cinematic tradition of timeless storytelling, pioneering vision, and artistic mastery since 1913.</p>
+        <a href="#about" class="btn">Explore Our Legacy</a>
+    </section>
+
+    <!-- About & Founders Section -->
+    <section id="about">
+        <h2>A Century of Cinema</h2>
+        <div class="legacy-grid">
+            <div class="legacy-text">
+                <p>Established in the dawn of Hollywood's golden era in 1913, the <strong>Starborn Film Corporation</strong> has stood as a beacon of cinematic excellence. From the pioneering days of silent features to the grandeur of modern widescreen epics, our studio has shaped the cultural landscape of global entertainment.</p>
+                <p>Through decades of innovation, technological breakthroughs, and unforgettable performances, we have remained true to our founding mantra: crafting stories that resonate across generations and reach for the stars.</p>
+            </div>
+            <div class="founders-box" id="founding">
+                <h3>The Historic Partnership (1913)</h3>
+                <p style="margin-bottom: 15px;">Born from a historic joint venture uniting two powerful creative forces:</p>
+                <ul>
+                    <li><strong>Vanya Group:</strong> Providing industrial mastery, strategic backing, and global enterprise vision.</li>
+                    <li><strong>Starborn Studios:</strong> Bringing peerless artistic talent, pioneer direction, and visionary storytelling.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline / Eras Section -->
+    <section id="milestones" class="timeline">
+        <h2>Cinematic Eras</h2>
+        <div class="timeline-container">
+            <div class="timeline-card">
+                <span>1913 - 1929</span>
+                <h3>The Silent Dawn</h3>
+                <p>Establishing the studio's foundations with ground-breaking silent epics, elaborate set designs, and international distribution networks.</p>
+            </div>
+            <div class="timeline-card">
+                <span>1930 - 1959</span>
+                <h3>The Golden Age</h3>
+                <p>The introduction of sound and color, launching iconic Hollywood legends and producing legendary masterpieces that defined studio-era cinema.</p>
+            </div>
+            <div class="timeline-card">
+                <span>1960 - 1999</span>
+                <h3>The Modern Epic</h3>
+                <p>Embracing new technological standards, widescreen formats, groundbreaking visual effects, and globally beloved blockbusters.</p>
+            </div>
+            <div class="timeline-card">
+                <span>2000 - Present</span>
+                <h3>The Century Mark</h3>
+                <p>Celebrating over 100 years of filmmaking excellence by merging classic cinematic soul with state-of-the-art digital production.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>© 1913 – 2026 20th Century Starborn Film Corporation. A Vanya Group & Starborn Studios Enterprise.</p>
+        <p>All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
